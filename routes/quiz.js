@@ -12,6 +12,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const datas = await Data.findById(req.params.id)
+    res.json(datas);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 
 
 router.post("/",async (req, res) => {
